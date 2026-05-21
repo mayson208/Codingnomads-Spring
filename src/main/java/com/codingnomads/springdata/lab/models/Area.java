@@ -2,25 +2,29 @@
 package com.codingnomads.springdata.lab.models;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
+@Table(name = "areas")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "areas")
-@Builder
 @ToString
 public class Area implements Serializable {
 
-    private static final long serialVersionUID = 153236560504273881L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String code;
+
+    public Area(String code) {
+        this.code = code;
+    }
 }
